@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://h54321fedcba"]
+
+[ext_resource type="Script" path="res://CharacterSelection.gd" id="1_cs_script"]
+[ext_resource type="Texture2D" path="res://tabby_cat_selection.jpg" id="2_ginkgo_tex"]
+[ext_resource type="Texture2D" path="res://black_cat_selection.jpg" id="3_raul_tex"]
+[ext_resource type="Texture2D" path="res://background_example.jpg" id="4_bg_texture"]
+
+[node name="CharacterSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cs_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_bg_texture")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 50.0
+offset_right = 200.0
+offset_bottom = 138.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Choose Your Cat"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -150.0
+offset_right = 400.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="GinkgoOption" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/GinkgoOption"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("2_ginkgo_tex")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Ginkgo" type="Button" parent="HBoxContainer/GinkgoOption"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Ginkgo"
+
+[node name="RaulOption" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/RaulOption"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("3_raul_tex")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Raul" type="Button" parent="HBoxContainer/RaulOption"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Raul"
+
+[connection signal="pressed" from="HBoxContainer/GinkgoOption/Ginkgo" to="." method="_on_ginkgo_pressed"]
+[connection signal="pressed" from="HBoxContainer/RaulOption/Raul" to="." method="_on_raul_pressed"]

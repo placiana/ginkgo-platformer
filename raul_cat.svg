@@ -1,0 +1,22 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cola -->
+  <path d="M16 44 Q 4 44 8 32" stroke="#2C3E50" stroke-width="6" fill="none" stroke-linecap="round" />
+  
+  <!-- Patas -->
+  <rect x="18" y="48" width="6" height="10" fill="#2C3E50" />
+  <rect x="34" y="48" width="6" height="10" fill="#2C3E50" />
+  
+  <!-- Cuerpo -->
+  <rect x="16" y="32" width="28" height="20" rx="8" fill="#2C3E50" />
+  
+  <!-- Cabeza -->
+  <circle cx="48" cy="30" r="12" fill="#2C3E50" />
+  <!-- Orejas -->
+  <path d="M40 22 L44 10 L50 20 Z" fill="#2C3E50" />
+  <path d="M52 20 L58 10 L62 22 Z" fill="#2C3E50" />
+  <!-- Ojos (Amarillos para resaltar) -->
+  <circle cx="52" cy="28" r="2.5" fill="#F1C40F" />
+  <circle cx="58" cy="28" r="2.5" fill="#F1C40F" />
+  <!-- Nariz -->
+  <path d="M58 32 L61 31 L61 33 Z" fill="#F1948A" />
+</svg>
