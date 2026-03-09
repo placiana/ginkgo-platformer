@@ -1,16 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://c987654321def"]
+[gd_scene load_steps=10 format=3 uid="uid://c987654321def"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_main_script"]
-[ext_resource type="PackedScene" uid="uid://b123456789abc" path="res://Player.tscn" id="2_player"]
-[ext_resource type="PackedScene" uid="uid://e54321fedcba" path="res://PauseMenu.tscn" id="3_pause_menu"]
-[ext_resource type="PackedScene" uid="uid://f654321edcba" path="res://Lava.tscn" id="4_lava"]
-[ext_resource type="PackedScene" uid="uid://g987654321fed" path="res://GameOver.tscn" id="5_game_over"]
-[ext_resource type="PackedScene" uid="uid://k123456789def" path="res://HUD.tscn" id="6_hud"]
-[ext_resource type="PackedScene" uid="uid://b1b1b1b1b1b1" path="res://Platform.tscn" id="7_platform"]
-[ext_resource type="PackedScene" uid="uid://p0rtal12345" path="res://Portal.tscn" id="8_portal"]
-[ext_resource type="Texture2D" path="res://assets/backgrounds/background_layer_1.png" id="9_bg1"]
-[ext_resource type="Texture2D" path="res://assets/backgrounds/background_layer_2.png" id="10_bg2"]
-[ext_resource type="Texture2D" path="res://assets/backgrounds/background_layer_3.png" id="11_bg3"]
+[ext_resource type="PackedScene" uid="uid://e54321fedcba" path="res://PauseMenu.tscn" id="2_pause_menu"]
+[ext_resource type="PackedScene" uid="uid://f654321edcba" path="res://Lava.tscn" id="3_lava"]
+[ext_resource type="PackedScene" uid="uid://g987654321fed" path="res://GameOver.tscn" id="4_game_over"]
+[ext_resource type="PackedScene" uid="uid://k123456789def" path="res://HUD.tscn" id="5_hud"]
+[ext_resource type="PackedScene" uid="uid://b1b1b1b1b1b1" path="res://Platform.tscn" id="6_platform"]
+[ext_resource type="PackedScene" uid="uid://p0rtal12345" path="res://Portal.tscn" id="7_portal"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/background_layer_1.png" id="8_bg1"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/background_layer_2.png" id="9_bg2"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/background_layer_3.png" id="10_bg3"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_main_script")
@@ -22,7 +21,7 @@ motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer1"]
-texture = ExtResource("9_bg1")
+texture = ExtResource("8_bg1")
 centered = false
 
 [node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -30,7 +29,7 @@ motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer2"]
-texture = ExtResource("10_bg2")
+texture = ExtResource("9_bg2")
 centered = false
 
 [node name="Layer3" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -38,30 +37,27 @@ motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer3"]
-texture = ExtResource("11_bg3")
+texture = ExtResource("10_bg3")
 centered = false
 
-[node name="Lava" parent="." instance=ExtResource("4_lava")]
+[node name="Lava" parent="." instance=ExtResource("3_lava")]
 position = Vector2(576, 620)
-
-[node name="Player" parent="." instance=ExtResource("2_player")]
-position = Vector2(200, 300)
 
 [node name="Platforms" type="Node2D" parent="."]
 
-[node name="Platform1" parent="Platforms" instance=ExtResource("7_platform")]
+[node name="Platform1" parent="Platforms" instance=ExtResource("6_platform")]
 position = Vector2(200, 500)
 
-[node name="Portal" parent="Platforms/Platform1" instance=ExtResource("8_portal")]
+[node name="Portal" parent="Platforms/Platform1" instance=ExtResource("7_portal")]
 position = Vector2(0, -120)
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 10
 
-[node name="HUD" parent="UI" instance=ExtResource("6_hud")]
+[node name="HUD" parent="UI" instance=ExtResource("5_hud")]
 
-[node name="PauseMenu" parent="UI" instance=ExtResource("3_pause_menu")]
+[node name="PauseMenu" parent="UI" instance=ExtResource("2_pause_menu")]
 visible = false
 
-[node name="GameOver" parent="UI" instance=ExtResource("5_game_over")]
+[node name="GameOver" parent="UI" instance=ExtResource("4_game_over")]
 visible = false
