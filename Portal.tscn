@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://p0rtal12345"]
+
+[ext_resource type="Shader" path="res://vortex.gdshader" id="1_vortex_shader"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vortex"]
+shader = ExtResource("1_vortex_shader")
+shader_parameter/color_inner = Color(0.2, 0.05, 0.4, 1)
+shader_parameter/color_outer = Color(0.8, 0.2, 1, 1)
+shader_parameter/speed = 2.0
+shader_parameter/vortex_intensity = 5.0
+shader_parameter/glow_intensity = 1.8
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_portal"]
+radius = 35.0
+height = 140.0
+
+[node name="Portal" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_vortex")
+offset_left = -60.0
+offset_top = -100.0
+offset_right = 60.0
+offset_bottom = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_portal")
