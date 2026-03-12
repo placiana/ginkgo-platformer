@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" path="res://assets/ui/tabby_cat_selection.jpg" id="2_ginkgo_tex"]
 [ext_resource type="Texture2D" path="res://assets/ui/black_cat_selection.jpg" id="3_raul_tex"]
 [ext_resource type="Texture2D" path="res://assets/characters/steve/steve_splash.png" id="5_steve_tex"]
+[ext_resource type="Texture2D" path="res://assets/characters/isabel/splash.png" id="6_isabel_tex"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/background_example.jpg" id="4_bg_texture"]
 
 [node name="CharacterSelection" type="Control"]
@@ -47,13 +48,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -500.0
+offset_left = -600.0
 offset_top = -150.0
-offset_right = 500.0
+offset_right = 600.0
 offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 40
 alignment = 1
 
 [node name="GinkgoOption" type="VBoxContainer" parent="HBoxContainer"]
@@ -61,7 +62,7 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/GinkgoOption"]
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 2
@@ -71,15 +72,15 @@ stretch_mode = 5
 
 [node name="Ginkgo" type="Button" parent="HBoxContainer/GinkgoOption"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Ginkgo (Tabby)"
+theme_override_font_sizes/font_size = 20
+text = "Ginkgo"
 
 [node name="RaulOption" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/RaulOption"]
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 2
@@ -89,15 +90,15 @@ stretch_mode = 5
 
 [node name="Raul" type="Button" parent="HBoxContainer/RaulOption"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Raul (Black)"
+theme_override_font_sizes/font_size = 20
+text = "Raul"
 
 [node name="SteveOption" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/SteveOption"]
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 2
@@ -107,9 +108,28 @@ stretch_mode = 5
 
 [node name="Steve" type="Button" parent="HBoxContainer/SteveOption"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "Steve"
+
+[node name="IsabelOption" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/IsabelOption"]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+texture = ExtResource("6_isabel_tex")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Isabel" type="Button" parent="HBoxContainer/IsabelOption"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Isabel"
 
 [connection signal="pressed" from="HBoxContainer/GinkgoOption/Ginkgo" to="." method="_on_ginkgo_pressed"]
 [connection signal="pressed" from="HBoxContainer/RaulOption/Raul" to="." method="_on_raul_pressed"]
 [connection signal="pressed" from="HBoxContainer/SteveOption/Steve" to="." method="_on_steve_pressed"]
+[connection signal="pressed" from="HBoxContainer/IsabelOption/Isabel" to="." method="_on_isabel_pressed"]

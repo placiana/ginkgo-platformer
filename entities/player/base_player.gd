@@ -102,15 +102,23 @@ func _physics_process(delta):
         velocity.x = move_toward(velocity.x, 0, current_friction * delta)
         
         if is_on_floor():
-            if not is_playing_bored:
-                inactivity_timer += delta
-                if inactivity_timer >= BORED_THRESHOLD and animation_player.has_animation("bored"):
-                    is_playing_bored = true
-                    animation_player.play("bored")
-                elif inactivity_timer >= IDLE_THRESHOLD:
-                    animation_player.play("idle")
-                else:
-                    animation_player.play("walk")
+            if abs(velocity.x) > 10.0:
+                # DESLIZAMIENTO POR INERCIA: Sin animación
+                animation_player.stop()
+                sprite.frame = 0 
+                inactivity_timer = 0
+            else:
+                # PARADO: Lógica de Idle/Bored
+                if not is_playing_bored:
+                    inactivity_timer += delta
+                    if inactivity_timer >= BORED_THRESHOLD and animation_player.has_animation("bored"):
+                        is_playing_bored = true
+                        animation_player.play("bored")
+                    elif inactivity_timer >= IDLE_THRESHOLD:
+                        animation_player.play("idle")
+                    else:
+                        animation_player.stop()
+                        sprite.frame = 0
     
     if not is_on_floor():
         inactivity_timer = 0

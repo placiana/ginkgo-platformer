@@ -5,11 +5,13 @@ var selected_cat = "ginkgo"
 var cat_scenes = {
 	"ginkgo": "res://entities/player/ginkgo.tscn",
 	"raul": "res://entities/player/raul.tscn",
-	"steve": "res://entities/player/steve.tscn"
+	"steve": "res://entities/player/steve.tscn",
+	"isabel": "res://entities/player/isabel.tscn"
 }
 
 var cat_textures = {
 	"ginkgo": preload("res://assets/ui/cat_player.svg"),
 	"raul": preload("res://assets/ui/raul_cat.svg"),
-	"steve": preload("res://assets/characters/steve/walk_sprite.png")
+	"steve": preload("res://assets/characters/steve/walk_sprite.png"),
+	"isabel": preload("res://assets/characters/isabel/walk.200x300x4.png")
 }
