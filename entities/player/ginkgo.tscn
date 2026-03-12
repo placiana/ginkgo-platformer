@@ -1,0 +1,142 @@
+[gd_scene load_steps=10 format=3 uid="uid://b123456789abc"]
+
+[ext_resource type="Script" path="res://entities/player/ginkgo.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/characters/ginkgo/walk_sprite.png" id="2_texture"]
+[ext_resource type="Texture2D" path="res://assets/characters/ginkgo/dash_sprite.png" id="3_dash_texture"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(80, 100)
+
+[sub_resource type="Animation" id="Animation_idle"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = { "times": PackedFloat32Array(0), "transitions": PackedFloat32Array(1), "update": 1, "values": [0] }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = { "times": PackedFloat32Array(0), "transitions": PackedFloat32Array(1), "update": 1, "values": [ExtResource("2_texture")] }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = { "times": PackedFloat32Array(0), "transitions": PackedFloat32Array(1), "update": 1, "values": [6] }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = { "times": PackedFloat32Array(0), "transitions": PackedFloat32Array(1), "update": 1, "values": [Vector2(0, -60)] }
+
+[sub_resource type="Animation" id="Animation_walk"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = { "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5), "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1), "update": 1, "values": [0, 1, 2, 3, 4, 5] }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = { "times": PackedFloat32Array(0), "transitions": PackedFloat32Array(1), "update": 1, "values": [ExtResource("2_texture")] }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = { "times": PackedFloat32Array(0), "transitions": PackedFloat32Array(1), "update": 1, "values": [6] }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = { "times": PackedFloat32Array(0), "transitions": PackedFloat32Array(1), "update": 1, "values": [Vector2(0, -60)] }
+
+[sub_resource type="Animation" id="Animation_dash"]
+resource_name = "dash"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = { "times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16), "transitions": PackedFloat32Array(1, 1, 1, 1, 1), "update": 1, "values": [0, 1, 2, 3, 4] }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = { "times": PackedFloat32Array(0), "transitions": PackedFloat32Array(1), "update": 1, "values": [ExtResource("3_dash_texture")] }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = { "times": PackedFloat32Array(0), "transitions": PackedFloat32Array(1), "update": 1, "values": [5] }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = { "times": PackedFloat32Array(0), "transitions": PackedFloat32Array(1), "update": 1, "values": [Vector2(0, -82)] }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_player"]
+_data = {
+"dash": SubResource("Animation_dash"),
+"idle": SubResource("Animation_idle"),
+"walk": SubResource("Animation_walk")
+}
+
+[node name="Ginkgo" type="CharacterBody2D"]
+script = ExtResource("1_script")
+collision_layer = 2
+collision_mask = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -60)
+texture = ExtResource("2_texture")
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -50)
+shape = SubResource("RectangleShape2D_player")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -100)
+limit_bottom = 648
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+drag_horizontal_enabled = false
+drag_vertical_enabled = false
+drag_left_margin = 0.1
+drag_right_margin = 0.1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = { "": SubResource("AnimationLibrary_player") }

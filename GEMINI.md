@@ -9,7 +9,7 @@ This is a 2D platformer project developed in **Godot 4.2+**. The game features a
 *   **Main Features**:
     *   **Character Selection**: Choose between "Ginkgo" (Tabby) and "Raul" (Black cat).
     *   **Movement Mechanics**: Gravity, jumping, and horizontal movement with sprite flipping.
-    *   **Procedural Lava**: Animated lava at the bottom of the screen using a custom shader (`lava.gdshader`) and noise distortion.
+    *   **Procedural Lava**: Animated lava at the bottom of the screen using a custom shader (`assets/shaders/lava.gdshader`) and noise distortion.
     *   **UI System**: Main Menu, Character Selection, Pause Menu (ESC), and Game Over screen with restart options.
     *   **Global State**: `GameManager.gd` handles persistent data like the selected character across scenes.
 
@@ -30,7 +30,7 @@ This is a 2D platformer project developed in **Godot 4.2+**. The game features a
 *   `GameManager.gd`: (Autoload) Stores character choice and preloads textures.
 *   `Player.gd`: Manages physics movement, gravity, and sprite initialization.
 *   `Lava.gd`: Handles collision detection with the player.
-*   `lava.gdshader`: GLSL shader for the procedural lava effect.
+*   `assets/shaders/lava.gdshader`: GLSL shader for the procedural lava effect.
 
 ## Building and Running
 
@@ -48,7 +48,7 @@ This is a 2D platformer project developed in **Godot 4.2+**. The game features a
     ```
 *   **Test**: (Godot doesn't have a default CLI test runner without plugins like GUT, but you can run specific scenes):
     ```bash
-    godot --path . res://Main.tscn
+    godot --path . res://scenes/main_level/main.tscn
     ```
 
 ## Development Conventions

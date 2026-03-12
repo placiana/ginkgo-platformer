@@ -3,13 +3,13 @@ config_version=5
 [application]
 
 config/name="Ginkgo Platformer"
-run/main_scene="res://Menu.tscn"
+run/main_scene="res://scenes/menus/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/ui/icon.svg"
 
 [autoload]
 
-GameManager="*res://GameManager.gd"
+GameManager="*res://scripts/autoloads/game_manager.gd"
 
 [display]
 
