@@ -51,45 +51,46 @@ const LOGO_5 = "[center][font_size=11]
 [color=#009929]     ▐░▌     ▐░█▀▀▀▀█░█▀▀      ▐░▌     ▐░█▀▀▀▀▀▀▀█░▌ ▐░▌       ▐░▌           ▐░▌     ▐░▌   ▐░▌ ▐░▌▐░▌          [/color]
 [color=#008825]     ▐░▌     ▐░▌     ▐░▌       ▐░▌     ▐░▌       ▐░▌ ▐░▌       ▐░▌           ▐░▌     ▐░▌    ▐░▌▐░▌▐░▌          [/color]
 [color=#007721]     ▐░▌     ▐░▌      ▐░█▄▄    ▐░█▄▄▄  ▐░▌       ▐░▌ ▐░█▄▄▄▄▄▄▄█░▌       ▄▄▄▄█░█▄▄▄▄ ▐░▌     ▐░▐░▌▐░█▄▄▄▄▄▄▄▄▄ [/color]
-[color=#00661d]     ▐░▌     ▐░▌       ▐░░░▌   ▐░░░░░▌ ▐░▌       ▐░▌ ▐░░░░░░░░░░░▌      ▐░░░░░░░░░░░▌▐░▌      ▐░░▌▐░░░░░░░░░░░▌[/color][/font_size][/center]"
+[color=#00661d]     ▐░▌     ▐░▌       ▐░░░▌   ▐░░░░░▌ ▐░▌       ▐░▌ ▐░░░░░░░░░░░▌      ▐░░░░░░░░░░░▌▐░▌      ▐░░▌▐░░░░░░░░░░░▌[/color]
+[color=#00661d]      ▀       ▀         ▀▀▀     ▀▀▀▀▀   ▀         ▀   ▀▀▀▀▀▀▀▀▀▀▀        ▀▀▀▀▀▀▀▀▀▀▀  ▀        ▀▀  ▀▀▀▀▀▀▀▀▀▀▀ [/color][/font_size][/center]"
 
 func _ready():
-	# Seleccionar logo aleatorio
-	var logos = [LOGO_1, LOGO_2, LOGO_3, LOGO_4, LOGO_5]
-	var selected_logo = logos[randi() % logos.size()]
-	
-	logo_label.text = selected_logo
-	subtitle_label.text = "[center][font_size=18][color=gray][pulse freq=1.2 color=#ffffff44]TRIAD INC. PRESENTS[/pulse][/color][/font_size][/center]"
-	
-	# Obtener el centro real después de que el motor procese el layout (una frame después)
-	await get_tree().process_frame
-	
-	# Iniciar centrado y desplazado hacia arriba
-	content_container.modulate.a = 0
-	var final_y = content_container.position.y
-	content_container.position.y -= 200
-	
-	# Secuencia de animación
-	var tween = create_tween()
-	
-	# 1. Scroll y Aparecer
-	tween.tween_property(content_container, "position:y", final_y, 1.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
-	tween.parallel().tween_property(content_container, "modulate:a", 1.0, 1.0)
-	
-	# 2. Esperar
-	tween.tween_interval(2.5)
-	
-	# 3. Desvanecer (Fade Out)
-	tween.tween_property(self, "modulate:a", 0.0, 1.0)
-	
-	# 4. Cambiar de escena
-	tween.tween_callback(_on_animation_finished)
+    # Seleccionar logo aleatorio
+    var logos = [LOGO_1, LOGO_2, LOGO_3, LOGO_4, LOGO_5]
+    var selected_logo = logos[randi() % logos.size()]
+    
+    logo_label.text = selected_logo
+    subtitle_label.text = "[center][font_size=18][color=gray][pulse freq=1.2 color=#ffffff44]TRIAD INC. PRESENTS[/pulse][/color][/font_size][/center]"
+    
+    # Obtener el centro real después de que el motor procese el layout (una frame después)
+    await get_tree().process_frame
+    
+    # Iniciar centrado y desplazado hacia arriba
+    content_container.modulate.a = 0
+    var final_y = content_container.position.y
+    content_container.position.y -= 200
+    
+    # Secuencia de animación
+    var tween = create_tween()
+    
+    # 1. Scroll y Aparecer
+    tween.tween_property(content_container, "position:y", final_y, 1.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+    tween.parallel().tween_property(content_container, "modulate:a", 1.0, 1.0)
+    
+    # 2. Esperar
+    tween.tween_interval(2.5)
+    
+    # 3. Desvanecer (Fade Out)
+    tween.tween_property(self, "modulate:a", 0.0, 1.0)
+    
+    # 4. Cambiar de escena
+    tween.tween_callback(_on_animation_finished)
 
 func _on_animation_finished():
-	get_tree().change_scene_to_file("res://scenes/menus/menu.tscn")
+    get_tree().change_scene_to_file("res://scenes/menus/menu.tscn")
 
 func _input(event):
-	# Saltar splash con cualquier tecla
-	if event is InputEventKey or event is InputEventMouseButton:
-		if event.pressed:
-			_on_animation_finished()
+    # Saltar splash con cualquier tecla
+    if event is InputEventKey or event is InputEventMouseButton:
+        if event.pressed:
+            _on_animation_finished()

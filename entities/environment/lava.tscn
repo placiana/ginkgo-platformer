@@ -16,7 +16,9 @@ noise = SubResource("FastNoiseLite_noise")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lava"]
 shader = ExtResource("2_shader")
 shader_parameter/speed = 0.05
-shader_parameter/distortion = 0.1
+shader_parameter/pixel_size = 6.0
+shader_parameter/wave_amplitude = 0.1
+shader_parameter/wave_frequency = 8.0
 shader_parameter/color_deep = Color(0.4, 0.02, 0, 1)
 shader_parameter/color_shallow = Color(1, 0.4, 0, 1)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_lava")

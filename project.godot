@@ -17,6 +17,10 @@ window/size/viewport_width=1152
 window/size/viewport_height=648
 window/stretch/mode="canvas_items"
 
+[gui]
+
+theme/custom_font="res://assets/ui/fonts/dos437.ttf"
+
 [input]
 
 dash={
