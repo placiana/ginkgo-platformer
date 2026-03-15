@@ -41,9 +41,21 @@ var rainbow_shader = preload("res://assets/shaders/rainbow_ghost.gdshader")
 var ghost_spawn_timer = 0.0
 const GHOST_INTERVAL = 0.04 
 
+# BEAM POWER
+var beam_scene = preload("res://entities/player/beam.tscn")
+var beam_instance = null
+var beam_cooldown = 0.0
+const BEAM_COOLDOWN_TIME = 0.6
+
 func _ready():
     # Conectar señal de fin de animación
     animation_player.animation_finished.connect(_on_animation_finished)
+    
+    # Instanciar el rayo
+    beam_instance = beam_scene.instantiate()
+    add_child(beam_instance)
+    # Posicionar a la altura de la cabeza del gato
+    beam_instance.position = Vector2(0, -60)
 
 func _physics_process(delta):
     if is_dashing:
@@ -59,6 +71,9 @@ func _physics_process(delta):
     
     if dash_cooldown_timer > 0:
         dash_cooldown_timer -= delta
+    
+    if beam_cooldown > 0:
+        beam_cooldown -= delta
 
     if is_dashing:
         velocity.y = 0
@@ -133,6 +148,12 @@ func _physics_process(delta):
         var target_offset = dash_direction * CAMERA_LOOK_AHEAD
         var weight = 1.0 - exp(-CAMERA_SMOOTH_SPEED * delta)
         camera.offset.x = lerp(camera.offset.x, target_offset, weight)
+
+    # ATAQUE (BEAM)
+    if beam_instance and beam_cooldown <= 0:
+        if Input.is_action_just_pressed("attack"):
+            beam_instance.activate(dash_direction)
+            beam_cooldown = BEAM_COOLDOWN_TIME
 
     move_and_slide()
 
